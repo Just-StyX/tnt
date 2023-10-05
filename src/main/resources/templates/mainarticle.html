@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <title>article - jb.dev</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/styles-main.css}">
+</head>
+<body>
+    <div class="main">
+        <div class="main-head">
+            <a href="/home"><h1 class="tnt">Today in Today</h1></a>
+        </div>
+        <div class="main-link">
+            <div class="logout">
+                <a href="/logout">Log out</a>
+            </div>
+        </div>
+    </div>
+    <hr class="style-two"/>
+    <div class="main-two">
+        <h3>Happy reading, <span th:text="${principal}"></span></h3>
+        <div class="main-article">
+            <p th:text="${art.dateCreated}" class="ma-para"></p>
+            <h2 th:text="${art.title}"></h2>
+            <hr class="style-two mtt"/>
+            <div th:utext="${art.mainArticle}" class="attc"></div>
+        </div>
+    </div>
+    <div class="main-article">
+        <hr class="style-two"/>
+        <div class="commet-feed">
+            <div class="comment" th:each="comm : ${comment}">
+                <p th:text="${comm.comment}"></p>
+                <p th:text="${principal}" class="ma-para"></p>
+                <p th:text="${comm.dateCreated}" class="ma-para"></p>
+                <p><a th:href="|/comment/${comm.commentID}|" class="main-t main-delete">Delete Comment</a></p>
+                <hr class="style-two"/>
+            </div>
+        </div>
+        <!-- <hr class="style-two mtt"/> -->
+    </div>
+    <div class="main-comment">
+        <form class="form" th:object="${comment}" th:action="@{/article/{id}/comment(id=${art.articleID})}" method="post">
+            <div class="main-article">
+                <label for="comment" class="comment-label">Comment: </label> <br />
+                <textarea name="comment" rows="8" cols="90"></textarea> <br />
+                <button type="submit" class="comment-btn">Post Comment</button> <br />
+            </div>
+        </form>
+        <div class="main-article">
+            <p class="ma-para"><a th:href="|/article/${art.articleID}/comment|" class="main-t">View all comments</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<!-- <form class="form" th:object="${comment}" th:action="@{/article/{id}/comment(id=${art.articleID})}" method="post">
+    <label for="comment">Comment: </label>
+    <textarea name="comment" rows="8" cols="80"></textarea>
+    <button type="submit">Post</button>
+</form> -->

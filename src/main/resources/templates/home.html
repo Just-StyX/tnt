@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <title>home - jb.dev</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/styles-main.css}">
+</head>
+<body>
+    <div class="main">
+        <div class="main-head">
+            <h1 class="tnt">Today in Today</h1>
+        </div>
+        <div class="main-link">
+            <div class="view-profile">
+                <a href="/user-profile">Profile</a>
+            </div>
+            <div class="get-all-article">
+                <a href="/article/all">Articles</a>
+            </div>
+            <div class="logout">
+                <a href="/logout">Log out</a>
+            </div>
+        </div>
+    </div>
+    <hr class="style-two"/>
+    <div class="main-two">
+        <h3>Happy reading, <span th:text="${principal}"></span></h3>
+        <div class="main-article">
+            <p th:text="${art.dateCreated}" class="ma-para"></p>
+            <h4 th:text="${art.title}"></h4>
+            <hr class="style-two mtt"/>
+            <a th:href="|/article/${art.articleID}|"><span th:text="${art.summary}" class="main-t"></span></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+CREATE SCHEMA IF NOT EXISTS `TnT-1`;
+
+USE `TnT-1`;
+
+CREATE TABLE IF NOT EXISTS users (
+user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+first_name VARCHAR(45) NOT NULL,
+last_name VARCHAR(45) NOT NULL,
+email VARCHAR(45) NOT NULL,
+password VARCHAR(70) NOT NULL,
+enabled TINYINT(4) DEFAULT NULL
+);
+
+
+
+CREATE TABLE IF NOT EXISTS roles (
+role_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(45) NOT NULL
+);
+
+
+
+CREATE TABLE IF NOT EXISTS user_roles (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+user_id INT NOT NULL,
+role_id INT NOT NULL,
+KEY user_fk_idx (user_id),
+KEY roles_fk_idx (role_id),
+CONSTRAINT roles_fk FOREIGN KEY (role_id) REFERENCES roles (role_id),
+CONSTRAINT user_fk FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS comments (
+comment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+author VARCHAR(45) NOT NULL,
+comments MEDIUMTEXT NOT NULL,
+date_created DATE NOT NULL,
+article_id INT NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS articles (
+article_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+date_created  DATE NOT NULL,
+title TEXT NOT NULL,
+summary TEXT NOT NULL,
+main_article MEDIUMTEXT NOT NULL 
+);
+
+
+
+
+
+
+
+
+
+

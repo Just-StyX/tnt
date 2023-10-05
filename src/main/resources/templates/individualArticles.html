@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <title>individual-article - jb.dev</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/styles-main.css}">
+</head>
+<body>
+    <div class="main">
+        <div class="main-head">
+            <a href="/home"><h1 class="tnt">Main Article</h1></a>
+        </div>
+        <div class="main-link">
+            <div class="logout">
+                <a href="/logout">Log out</a>
+            </div>
+        </div>
+    </div>
+    <hr class="style-two"/>
+    <div class="main-article">
+        <div class="articles">
+            <p th:text="${art.dateCreated}" class="ma-para"></p>
+            <h2 th:text="${art.title}"></h2>
+            <hr class="style-two mtt"/>
+            <div th:utext="${art.mainArticle}" class="attc"></div>
+        </div>
+        <!-- <hr class="style-two mtt"/> -->
+        <div class="main-articless">
+            <hr class="style-two"/>
+            <div class="commet-feed">
+                <div class="comment" th:each="comm : ${comment}">
+                    <p th:text="${comm.comment}"></p>
+                    <p th:text="${principal}" class="ma-para"></p>
+                    <p th:text="${comm.dateCreated}" class="ma-para"></p>
+                    <p><a th:href="|/comment/${comm.commentID}|" class="main-t main-delete">Delete Comment</a></p>
+                    <hr class="style-two"/>
+                </div>
+            </div>
+            <!-- <hr class="style-two mtt"/> -->
+        </div>
+        <div class="main-comment">
+            <form class="form" th:object="${comment}" th:action="@{/individual/{id}/comment(id=${art.articleID})}" method="post">
+                <label for="comment" class="comment-label">Comment: </label><br />
+                <textarea name="comment" rows="8" cols="90"></textarea> <br />
+                <button type="submit" class="comment-btn">Post Comment</button> <br />
+            </form>
+        </div>
+        <p class="ma-para"><a th:href="|/article/${art.articleID}/comment|" class="main-t">View all comments</a></p>
+        <input type="hidden" name="admin" th:value="${owner}" class="adminView">
+        <div class="admin-tins">
+            <p><a th:href="|/article-edit/${art.articleID}|" class="main-t main-edit">Edit article</a></p>
+            <p><a th:href="|/article-delete/${art.articleID}|" class="main-t main-delete">Delete article</a></p>
+        </div>
+    </div>
+    <script type="text/javascript" th:src="@{/js/individualArticle.js}"></script>
+</body>
+</html>

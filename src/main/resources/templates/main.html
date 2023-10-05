@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>welcome - jb.dev</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" th:href="@{/css/styles-main.css}">
+</head>
+<body>
+    <div class="main">
+        <div class="main-head">
+            <h1 class="tnt">Today in Today</h1>
+        </div>
+        <div class="main-link">
+            <div class="main-link-signup">
+                <a href="/user">Sign up</a>
+            </div>
+            <div class="main-link-login">
+                <a href="/login">Login</a>
+            </div>
+        </div>
+    </div>
+    <hr class="style-two"/>
+    <div class="time">
+        <div class="clock">
+            <h3 class="t-h3">Time to Grow Your Mind</h3>
+            <p class="time-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                has been the industry's standard dummy text ever since the 1500s, when an unknown
+                printer took a galley of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with the release of
+                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div class="previous">
+            <h4 class="t-h3">View Previous Articles</h4>
+            <div class="articles" th:each="article : ${articles}">
+                <a th:href="|/individual/${article.articleID}|"><span th:text="${article.title}" class="main-t"></span></a>
+                <hr class="style-two"/>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

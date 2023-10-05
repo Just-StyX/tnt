@@ -1,0 +1,66 @@
+.main-article {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.ma-para {
+    font-style: italic;
+    font-weight: lighter;
+    text-align: right;
+    font-size: small;
+}
+
+.mtt {
+    margin-bottom: 2rem;
+}
+
+.comment-label {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.comment-btn {
+    margin-top: 1rem;
+    background-color: #025464;
+    color: #fff;
+    font-size: medium;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+.attc {
+    line-height: 2rem;
+    font-weight: lighter;
+}
+
+.main-delete:hover {
+    margin-top: 1rem;
+    background-color: #CD1818;
+    color: #fff;
+    font-size: medium;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+.main-edit:hover {
+    margin-top: 1rem;
+    background-color: #025464;
+    color: #fff;
+    font-size: medium;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+
+.altt:hover {
+    margin-top: 0.5rem;
+    background-color: #025464;
+    color: #fff;
+    font-size: small;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
